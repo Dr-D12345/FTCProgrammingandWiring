@@ -8,7 +8,7 @@
 
 Wiring is one of the most crucial parts of robot. It is one of the biggest factors within preventing errors and making a presentable robot, however it often doesn't receive the care and attention it deserves. So today, we are going to speak on some key things to remember when you are wiring your robot. 	
 
-**Mounting the Android Phone	**
+**Mounting the Android Phone**
 
 When mounting the Android phone, some things to key mind include are:
 
