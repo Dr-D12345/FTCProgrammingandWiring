@@ -2,6 +2,8 @@
 
 ###### Provided Francis Lewis High School Robotics
 
+This is a basic guide describing the  basics of java programming, wiring and FTC programming
+
 
 
 ## Fundamentals of Wiring
@@ -210,5 +212,17 @@ Sensors are crucial when developing for the autonomous period. They provide heig
 
   }
   ```
+
+  ​
+
+## Additional Resources
+
+[PowerPoint](https://docs.google.com/presentation/d/14HG1e36PG30nOiCY_7Dr6g6dsKZz9uHJGXEXTaaPF9s/edit?usp=sharing)
+
+[VuforiaHomePage](https://www.vuforia.com/)
+
+[FTC Offical Wiki](https://github.com/ftctechnh/ftc_app/wiki)
+
+
 
   ​
