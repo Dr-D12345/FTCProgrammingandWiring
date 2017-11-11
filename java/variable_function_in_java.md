@@ -1,13 +1,31 @@
 # Java Data Type
 
-- Int 
-  - Int Accept an integer value
-- Double
+- ## Int 
+
+  - Int accept an integer value
+- ## Double
+
   - Double accept a decimal value
-- Boolean
+- ## Boolean
+
   - Boolean accept true / false
-- Char
+- ## Char
+
   - Char accept a single character
-- String
+- ## String
+
   - String accept a string that contain numbers and characters
+
+# Declare a Variable
+
+```java
+int myNumber;
+myNumber = 5;
+```
+
+OR
+
+```java
+int myNumber = 5;
+```
 
