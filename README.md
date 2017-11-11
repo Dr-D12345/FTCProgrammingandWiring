@@ -94,11 +94,81 @@ Sensors are crucial when developing for the autonomous period. They provide heig
    telemetry.addData("rate", "%.4f deg/s",      gyroscope.getAngularVelocity(AngleUnit.DEGREES).zRotationRate);
 
   }
-
   ```
 
-  ​
+## Autonomous programming. Decoding the encrypted code.
 
+**Different Types of Opmodes**
 
+- OpMode
 
-   
+  - Used primarily during the driver controlled period
+
+  - Uses input of gamepad to perform tasks
+
+  - Operates on a continuous loop
+
+  - Never Ends and can only end on by the driver
+
+  - ```java
+    //A very Basic Opmode
+    //decleration of the 2 motors
+    private DcMotor leftDrive = null;
+    private DcMotor rightDrive = null;
+
+    @Override
+        public void init() {//the function that gets intialized once the driver hits init
+            telemetry.addData("Status", "Initialized");
+
+          //getting the
+            leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
+            rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+          //settting the direction so no values need to be inversed
+           	leftDrive.setDirection(DcMotor.Direction.FORWARD);
+            rightDrive.setDirection(DcMotor.Direction.REVERSE);
+
+        }
+    @Override
+        public void loop() {//the part that starts once the driver hits play
+           //setting the motor power based on the input of the game pad
+            leftDrive.setPower(gamepad1.left_stick_y);
+            rightDrive.setPower(gamepad1.right_stick_y);
+
+        }
+
+    ```
+
+- Linear OpMode
+
+  - Operates during the Autonomous period
+
+  - Operates Linearly(from beginning to end)
+
+  - Stops once it reaches the end of the program
+
+  - Initiated by the drivers team
+
+  - ```java
+    //A very Basic LinearOpmode
+    //decleration of the 2 motors
+    private DcMotor leftDrive = null;
+    private DcMotor rightDrive = null;
+      @Override
+        public void runOpMode() throws InterruptedException{
+    	//initalize motors
+           leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
+           rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+
+          waitForStart();
+          //go full power
+          leftDrive.setPower(1)
+          rightDrive.setPower(1)
+          Thread.sleep(4000);//wait for 4 seconds
+          //turn off motors
+          leftDrive.setPower(0)
+          rightDrive.setPower(0)
+        }//end
+
+    ```
+
+  - ​
