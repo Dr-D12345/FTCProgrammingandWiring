@@ -32,6 +32,8 @@ When mounting the Android phone, some things to key mind include are:
 
 ## Programming Sensors
 
+[Java Basics](https://github.com/Dr-D12345/FTCProgrammingandWiring/blob/master/bascis_in_java.md)
+
 Sensors are crucial when developing for the autonomous period. They provide heightened awareness of the robots surroundings allowing for more accurate and higher scoring auton. Today we are going to speak about 3 different sensor:
 
 - Color Sensor
@@ -171,4 +173,38 @@ Sensors are crucial when developing for the autonomous period. They provide heig
 
     ```
 
-  - ​
+**Vuforia**
+
+- Vuforia is a simple image processing framework and it does most of jobs for you compare to OpenCV.
+
+
+- Vuforia allows you to simply scan in objects and download them to the phone. This is the simplest way of using computer vision in the FTC game to decode the Crypto Box.
+
+- ```java
+  VuforiaLocalizer vuforia;
+  @Override
+      public void init() {//the function that gets intialized once the driver hits init
+          telemetry.addData("Status", "Initialized");
+        //find the camera
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        //inialize the vufoira
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+        //see the key
+  parameters.vuforiaLicenseKey = "ATsODcD/////AAAAAVw2lR...d45oGpdljdOh5LuFB9nDNfckoxb8COxKSFX";
+
+    this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        //loading the assets
+    VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
+          VuforiaTrackable relicTemplate = relicTrackables.get(0);
+          relicTemplate.setName("relicVuMarkTemplate"); // can help in debugging; otherwise not necessary
+
+
+      }
+
+  public void loop(){
+     telemetry.addData("VuMark", "%s visible", vuMark);//just like get the data from the cryptobox
+
+  }
+  ```
+
+  ​
