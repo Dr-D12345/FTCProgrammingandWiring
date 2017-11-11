@@ -8,7 +8,7 @@
 
 Wiring is one of the most crucial parts of robot. It is one of the biggest factors within preventing errors and making a presentable robot, however it often doesn't receive the care and attention it deserves. So today, we are going to speak on some key things to remember when you are wiring your robot. 	
 
-**Mounting the Android Phone**
+**Mounting the Android Phone	**
 
 When mounting the Android phone, some things to key mind include are:
 
@@ -42,20 +42,22 @@ Sensors are crucial when developing for the autonomous period. They provide heig
 
   - ```java
     ColorSensor colorSensor;
-    @Override
-    	public void init() {
-    		colorSensor = hardwareMap.get(NormalizedColorSensor.class, "sensor_color");
-             colorSensor.enableLed(true);//set true or false based on how much light the color sensor is receiveing
-    	}
-    @Override
+
+        @Override
+        public void init() {
+            colorSensor = hardwareMap.get(ColorSensor.class, "sensor_color");
+            colorSensor.enableLed(true);//set true or false based on how much light the color sensor is receiveing
+        }
+
+        @Override
         public void loop() {
 
-        telementry.addData("Red", colorsensor.red());
-        telementry.addData("Blue", colorsensor.blue());
-        telementry.addData("Green", colorsensor.green());
-          if(colorsensor.blue>colorsensor.red()){
-            //object is more blue than red
-          }
+            telemetry.addData("Red", colorSensor.red());
+            telemetry.addData("Blue", colorSensor.blue());
+            telemetry.addData("Green", colorSensor.green());
+            if (colorSensor.blue() > colorSensor.red()) {
+                //object is more blue than red
+            }
 
         }
     ```
@@ -86,16 +88,18 @@ Sensors are crucial when developing for the autonomous period. They provide heig
   - Allows for more accurate turns
 
   ```java
-  Gyroscope gyroscope
-  @Override
-  	public void init() {
-  		gyroscope = hardwareMap.get(Gyroscope.class, "sensor_gyro");
-
+  GyroSensor  gyroSensor;
+      @Override
+      public void init() {
+          gyroSensor = hardwareMap.get(GyroSensor.class, "sensor_gyro");
+          gyroSensor.calibrate();
       }
-  public void loop() {
-   telemetry.addData("rate", "%.4f deg/s",      gyroscope.getAngularVelocity(AngleUnit.DEGREES).zRotationRate);
 
-  }
+      public void loop() {
+         telemetry.addData("X value: ",gyroSensor.rawX());
+          telemetry.addData("Y value: ",gyroSensor.rawY());
+          telemetry.addData("Z value: ",gyroSensor.rawZ());
+      }
   ```
 
 ## Autonomous programming. Decoding the encrypted code.
